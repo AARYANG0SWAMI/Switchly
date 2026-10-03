@@ -20,12 +20,12 @@ public class FlagService {
         this.flagRepository = flagRepository;
     }
 
-    public Flag create(UUID projectId, String key, String name){
+    public Flag create(UUID projectId, String key, String name, String description){
         Project project = projectService.getById(projectId);     //404 if does not exists
         if(flagRepository.existsByProjectIdAndKey(projectId, key)){
             throw new ConflictException("A flag with key '" + key + "' already exists in this project");
         }
-        Flag flag = new Flag(UUID.randomUUID(), project.getOrganizationId(), project.getId(),key,name,false);
+        Flag flag = new Flag(UUID.randomUUID(), project.getOrganizationId(), project.getId(),key,name,description,false);
             return flagRepository.save(flag);
     }
     public Flag getById(UUID id){

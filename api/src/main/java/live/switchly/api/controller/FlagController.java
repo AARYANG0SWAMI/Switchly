@@ -30,18 +30,18 @@ public class FlagController {
     @PostMapping("/projects/{projectId}/flags")
     @ResponseStatus(HttpStatus.CREATED)
     public Flag create(@PathVariable UUID projectId,@Valid @RequestBody CreateFlagRequest request){
-        return flagService.create(projectId, request.key(), request.name());
+        return flagService.create(projectId, request.key(), request.name(),request.description());
     }
     @GetMapping("/flags/{flagId}")
     public Flag getById(@PathVariable UUID flagId){
         return flagService.getById(flagId);         
     }
     @GetMapping("/projects/{projectId}/flags")
-    public List<Flag> getAllForProject(@PathVariable UUID protectedId){
-        return flagService.getAllForProject(protectedId);
+    public List<Flag> getAllForProject(@PathVariable UUID projectId){
+        return flagService.getAllForProject(projectId);
     }
-    @PutMapping("flags/{flagid}/state")
-    public Flag setFlag(@PathVariable UUID flagId, @Valid @RequestBody UpdateFlagStateRequest request){
+    @PutMapping("/flags/{flagId}/state")
+    public Flag setState(@PathVariable UUID flagId, @Valid @RequestBody UpdateFlagStateRequest request){
         return flagService.setEnabled(flagId, request.enabled());
     }
 }

@@ -8,5 +8,6 @@ public record CreateFlagRequest(
     @Pattern(regexp = "[a-z0-9-]+", message = "use only lowercase letters, numbers and hyphens")
     String key,
     @NotBlank 
-    String name
+    String name,
+    String description
 ) {}
