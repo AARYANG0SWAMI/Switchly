@@ -22,7 +22,7 @@ public class Flag {
     public UUID getId(){return id;}
     public UUID getOrganitaionId(){return organizationId;}
     public UUID getProjectId(){return projectId;}
-    public String getkey(){return key;}
+    public String getKey(){return key;}
     public String getName(){return name;}
     public boolean isEnabled(){return enabled;}
 
