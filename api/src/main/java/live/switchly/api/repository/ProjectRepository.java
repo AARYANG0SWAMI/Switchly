@@ -7,6 +7,6 @@ import live.switchly.api.model.Project;
 public interface ProjectRepository {
         Project save(Project project);
         Optional<Project> findById(UUID id);
-        List<Project> findAll();
+        List<Project> findByOrganizationId(UUID organizationId);
 
 }
