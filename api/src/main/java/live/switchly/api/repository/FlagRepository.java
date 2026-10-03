@@ -12,5 +12,6 @@ public interface FlagRepository {
     Optional<Flag> findById(UUID id);
     List<Flag> findByProjectId(UUID projectId);
     boolean existsByProjectIdAndKey(UUID projectId, String key);
+    void deleteById(UUID id);
 
 }

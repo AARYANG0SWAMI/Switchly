@@ -41,5 +41,9 @@ public class FlagService {
         flag.setEnabled(enabled);
         return flagRepository.save(flag);
     }
+   public void delete(UUID flagId) {
+    getById(flagId);   // Throws NotFoundException if the flag doesn't exist
+    flagRepository.deleteById(flagId);
+}
 
 }

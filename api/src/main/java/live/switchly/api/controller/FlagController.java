@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,5 +44,10 @@ public class FlagController {
     @PutMapping("/flags/{flagId}/state")
     public Flag setState(@PathVariable UUID flagId, @Valid @RequestBody UpdateFlagStateRequest request){
         return flagService.setEnabled(flagId, request.enabled());
+    }
+    @DeleteMapping("/api/v1/flags/{flagId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteFlag(@PathVariable UUID flagId){
+            flagService.delete(flagId);
     }
 }
